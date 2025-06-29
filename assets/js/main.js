@@ -15,9 +15,13 @@ function convertPokemonToLi(pokemon) {
                 <ol class="types">
                     ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
                 </ol>
+                <img src="${pokemon.photo}" alt="${pokemon.name}">
+            </div>
 
-                <img src="${pokemon.photo}"
-                     alt="${pokemon.name}">
+            <div class="extra-details">
+                <p><strong>HP:</strong> ${pokemon.hp}</p>
+                <p><strong>Ataque:</strong> ${pokemon.attack}</p>
+                <p><strong>Defesa:</strong> ${pokemon.defense}</p>
             </div>
         </li>
     `
@@ -39,7 +43,6 @@ loadMoreButton.addEventListener('click', () => {
     if (qtdRecordsWithNexPage >= maxRecords) {
         const newLimit = maxRecords - offset
         loadPokemonItens(offset, newLimit)
-
         loadMoreButton.parentElement.removeChild(loadMoreButton)
     } else {
         loadPokemonItens(offset, limit)
